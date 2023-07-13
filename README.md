@@ -1,6 +1,6 @@
 # Pulsenmore Home Assignment
 ## Data Loading And Description
-### The 'factory_test.csv' table contains test data for 51 devices that were selected as a sample group from the population of devices tested in the factory.
+The 'factory_test.csv' table contains test data for 51 devices that were selected as a sample group from the population of devices tested in the factory.
 The first assumption is that Xi represents a constant value for each device, and Yi values are centered around the corresponding Xi values. This suggests that Xi could be considered as the expected value, and Yi as the actual value for each device. 
 Alternatively, the second assumption is that Xi represents a timeline, while Yi represents the corresponding values obtained at each specific time point.  we remove the missing values from the table in order to analyse the data.
 
@@ -14,8 +14,7 @@ Alternatively, the second assumption is that Xi represents a timeline, while Yi 
 ### 50%    1495.000000  18.0  18.000000  14.0  13.450000  12.0  11.500000   9.0   8.330000
 ### 75%    1497.000000  18.0  20.250000  14.0  13.520000  12.0  12.355000   9.0   8.555000
 ### max    2004.000000  18.0  25.260000  14.0  13.990000  12.0  14.560000   9.0   9.160000
-
-### according of the statistics and that the mean of each of y2,y3,y4,y5 is very close to xi i will analyse the first assumption.
+according of the statistics and that the mean of each of y2,y3,y4,y5 is very close to xi i will analyse the first assumption.
 
 ## Data Visualization and Explenation
 <img width="839" alt="Screenshot 2023-07-13 183221" src="https://github.com/noamtza/Home-Assignment/assets/96843396/9b7f35ce-8991-4ae6-af6d-f38f78139a55">
