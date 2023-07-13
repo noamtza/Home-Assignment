@@ -49,7 +49,6 @@ for i, col in enumerate(['Y2', 'Y3', 'Y4', 'Y5']):
             transform=axs[0].transAxes, fontsize=8, color='g')
 plt.suptitle('Yi as a function of the devices index',y=1)
 plt.show()
-plt.savefig('./plot.png')
 
 # Create a plot for y1 as a function of of the devices index
 x_values = range(len(data))
@@ -64,31 +63,25 @@ fig, axs = plt.subplots(1, 5, figsize=(15, 3))
 axs[0].hist(data['Y1'], bins=10)
 axs[0].set_xlabel('Y1')
 axs[0].set_ylabel('frequency')
-axs[0].set_title('Histogram of Y1')
 
 axs[1].hist(data['Y2'], bins=10)
 axs[1].set_xlabel('Y2')
 axs[1].set_ylabel('frequency')
-axs[1].set_title('Histogram of Y2')
 
 axs[2].hist(data['Y3'], bins=10)
 axs[2].set_xlabel('Y3')
 axs[2].set_ylabel('frequency')
-axs[2].set_title('Histogram of Y3')
 
 axs[3].hist(data['Y4'], bins=10)
 axs[3].set_xlabel('Y4')
 axs[3].set_ylabel('frequency')
-axs[3].set_title('Histogram of Y4')
 
 axs[4].hist(data['Y5'], bins=10, density=True)
 axs[4].set_xlabel('Y5')
 axs[4].set_ylabel('frequency')
-axs[4].set_title('Histogram of Y5')
 
 plt.tight_layout()
 plt.show()
-plt.savefig('./plot.png')
 
 # Calculate the absolute relative error for each combination
 absolute_error_2 = abs((data['X2'] - data['Y2']) / data['X2'])
@@ -146,23 +139,6 @@ min_relative_error_3 = np.min(abs((data['X3'] - data['Y3']) / data['X3']))
 min_relative_error_4 = np.min(abs((data['X4'] - data['Y4']) / data['X4']))
 min_relative_error_5 = np.min(abs((data['X5'] - data['Y5']) / data['X5']))
 
-
-# Calculate the maximum absolute relative error
-max_relative_error_2= np.max(abs((data['X2'] - data['Y2']) / data['X2']))
-max_relative_error_3 = np.max(abs((data['X3'] - data['Y3']) / data['X3']))
-max_relative_error_4 = np.max(abs((data['X4'] - data['Y4']) / data['X4']))
-max_relative_error_5 = np.max(abs((data['X5'] - data['Y5']) / data['X5']))
-
-print("Minimum Relative Error (x2-y2)/x2:", min_relative_error_2)
-print("Minimum Relative Error (y3-x3)/y3:", min_relative_error_3)
-print("Minimum Relative Error (y4-x4)/y4:", min_relative_error_4)
-print("Minimum Relative Error (y5-x5)/y5:", min_relative_error_5 )
-
-print("Maximum Relative Error (y1-x1)/y1:", max_relative_error_2)
-print("Maximum Relative Error (y2-x2)/y2:", max_relative_error_3)
-print("Maximum Relative Error (y3-x3)/y3:", max_relative_error_4)
-print("Maximum Relative Error (y4-x4)/y4:", max_relative_error_5)
-
 existing_data = pd.read_csv('factory_test_data.csv')
 new_data = pd.read_csv('new_devices.csv')
 combined_data = pd.concat([existing_data, new_data])
@@ -199,35 +175,24 @@ print(new_data_ranked)
 
 
 def check_device(new_device):
-    """
-    Checks if the measurements of a new device fall within the specified ranges based on mean ± std values,
-    and if the first measurement (Y1) falls within the range of 1400 to 2010.
-
-    Parameters:
-        new_device (dict): Dictionary containing the measurements of the new device.
-
-    Returns:
-        bool: True if all measurements are within the ranges, False otherwise.
-    """
     mean_values = {'Y1': mean_y1, 'Y2': mean_y2, 'Y3': mean_y3, 'Y4': mean_y4, 'Y5': mean_y5}
     std_values = {'Y1': std_y1, 'Y2': std_y2, 'Y3': std_y3, 'Y4': std_y4, 'Y5': std_y5}
 
     for key in new_device.keys():
+        if key == 'Y1':
+            continue
+        if key.startswith('X') :
+            continue
         mean = mean_values.get(key)
         std = std_values.get(key)
         measurement = new_device[key]
+        if mean is not None and std is not None:
+            lower_bound = mean - std
+            upper_bound = mean + std
 
-        if key == 'Y1':
-            if measurement < 1400 or measurement > 2010:
+            if measurement < lower_bound or measurement > upper_bound:
                 return False
         else:
-            if mean is not None and std is not None:
-                lower_bound = mean - std
-                upper_bound = mean + std
-
-                if measurement < lower_bound or measurement > upper_bound:
-                    return False
-            else:
-                return False
+            return False
 
     return True
