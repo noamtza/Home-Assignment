@@ -20,11 +20,12 @@ max    2004.000000  18.0  25.260000  14.0  13.990000  12.0  14.560000   9.0   9.
 
 ## Data Visualization and Explenation
 <img width="839" alt="Screenshot 2023-07-13 183221" src="https://github.com/noamtza/Home-Assignment/assets/96843396/9b7f35ce-8991-4ae6-af6d-f38f78139a55">
-### In order to check the first assumption, we created four graphs, one for each Y2, Y3, Y4, and Y5, as a function of the index of the device. In each graph, the green line represents the mean of the values of Yi, while the red line represents the expected value. Upon analyzing the graphs, we observe that the mean values of Yi are very close to their corresponding expected values. Additionally, we notice that the dispersion of values in Y2 and Y4 is higher compared to Y3 and Y5.(the std values of Y2 Y3 Y4 and Y5 are also approved that). This observation prompts us to further investigate the Probability Distribution of each Yi.
+In order to check the first assumption, we created four graphs, one for each Y2, Y3, Y4, and Y5, as a function of the index of the device. In each graph, the green line represents the mean of the values of Yi, while the red line represents the expected value. Upon analyzing the graphs, we observe that the mean values of Yi are very close to their corresponding expected values. Additionally, we notice that the dispersion of values in Y2 and Y4 is higher compared to Y3 and Y5.(the std values of Y2 Y3 Y4 and Y5 are also approved that). This observation prompts us to further investigate the Probability Distribution of each Yi.
 <img width="955" alt="image" src="https://github.com/noamtza/Home-Assignment/assets/96843396/4dedcc14-9d2e-4d72-8589-df2c8e38ebbc">
-###we will show also a graph of the absolute relative error of each y2,y3,y4,y5 as a function of y1.
-!['f'Probability Distribution of {col}'']('./plot.png')
-and we can see that y2 has the bigger absolute relative error and than y4 y5 and than y3.
+we will also show a graph of the absolute relative error of each y2,y3,y4,y5 as a function of y1.
+<img width="853" alt="Screenshot 2023-07-13 183845" src="https://github.com/noamtza/Home-Assignment/assets/96843396/4e592569-0aa1-494f-82e4-146fa1b094d8">
+as we can see that y2 has the bigger absolute relative error and than y4 y5 and than y3.
+
 ### preprocessing:
 As part of the data preprocessing step, missing values were removed from the dataset during the data loading and description phase. This ensures that the data used for analysis is complete and reliable. Furthermore, probability distribution plots were created for the variables y2, y3, y4, and y5. The observed patterns in these plots indicate that the distributions of y2, y3, y4, and y5 closely resemble Gaussian curves, suggesting that they follow a normal distribution. Based on this observation, it is reasonable to assume that y2, y3, y4, and y5 have a normal distribution. This assumption will guide further analysis and modeling of the data.
 
